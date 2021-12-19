@@ -1,5 +1,5 @@
-# FreezaChessJava
+# 9 Cards
 
-Simple Chess game made for 2 player play, or let your computer go into deep learning mode, and play a super-strong ai.
+Card game based off triple triad from Final Fantasy 8
 
 ![alt tag](https://i.imgur.com/l0uvugo.png)

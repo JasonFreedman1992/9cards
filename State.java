@@ -42,27 +42,21 @@ public class State
     {
         if(Turn.equals("b")){
             Turn = "r";
+            // remove last card from deck
+            blueDeck.remove(0);
         }
         else{
             Turn = "b";
+            // remove last card from deck
+            redDeck.remove(0);
         }
     }
     public void update()
     {
         if(!isSpotTaken()){
-            // @todo: set the piece
             board[row][column].piece = Piece;
             board[row][column].turn = Turn;
             board[row][column].card = state_card;
-            System.out.println("ZILCHH" + state_card);
-            System.out.println("ZILCHH" + board[row][column].card);
-            if(Turn.equals("b")){
-                blueDeck.remove(0);
-            }
-            else{
-                redDeck.remove(0);
-            }
-
             //
             // add logic
             //
@@ -80,65 +74,54 @@ public class State
         // check up
         try{
             if(row-1 >= 0){
-                if(board[row-1][column].card != null){
-                    if(state_card.up > board[row-1][column].card.down){
-                        System.out.println("found 1");
-                        board[row-1][column].turn = Turn;
-                    }
+                if(state_card.up > board[row-1][column].card.down){
+                    board[row-1][column].turn = Turn;
                 }
             }
         }
         catch(Exception e){
-            System.out.println("exception 1");
+            // usually out of bounds exception
+            // or null object in board array
         }
 
         // check right
         try{
             // System.out.println("found 2");
             if(column + 1 < 3){
-                if(board[row][column+1].card != null){
-                    if(state_card.right > board[row][column+1].card.left){
-                        System.out.println("found 2");
-                        board[row][column+1].turn = Turn;
-                    }
+                if(state_card.right > board[row][column+1].card.left){
+                    board[row][column+1].turn = Turn;
                 }
             }
         }
         catch(Exception e){
-            System.out.println("exception 2");
+            // usually out of bounds exception
+            // or null object in board array
         }
 
         // check down
         try{
             if(row + 1 < 3){
-                if(board[row+1][column].card != null){ 
-                    System.out.println("ZIP" + board[row][column].piece);
-                    if(state_card.down > board[row+1][column].card.up){
-                        System.out.println("found 3");
-                        board[row+1][column].turn = Turn;
-                    }
-                    
+                if(state_card.down > board[row+1][column].card.up){
+                    board[row+1][column].turn = Turn;
                 }
             }
         }
         catch(Exception e){
-            // e.printStackTrace();
-            System.out.println("exception 3");
+            // usually out of bounds exception
+            // or null object in board array
         }
 
         // check left
         try{
             if(column - 1 >= 0){
-                if(board[row][column-1].card != null){
-                    if(state_card.left > board[row][column-1].card.right){
-                        System.out.println("found 4");
-                        board[row][column-1].turn = Turn;
-                    }
+                if(state_card.left > board[row][column-1].card.right){
+                    board[row][column-1].turn = Turn;
                 }
             }
         }
         catch(Exception e){
-            System.out.println("exception 4");
+            // usually out of bounds exception
+            // or null object in board array
         }
         
 

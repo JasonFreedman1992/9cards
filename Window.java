@@ -323,13 +323,6 @@ public class Window extends JFrame
             catch(Exception e){
                 blueDeck[i].setIcon(null);
             }
-            // if(state.blueDeck.get(i) != null){
-            //     String iconString = state.blueDeck.get(i) + ".png";
-            //     blueDeck[i].setIcon(stringToImage.get(iconString));
-            // }
-            // else{
-            //     blueDeck[i].setIcon(null);
-            // }
         }
 
         // red deck
@@ -346,13 +339,6 @@ public class Window extends JFrame
             catch(Exception e){
                 redDeck[i].setIcon(null);
             }
-            // if(state.redDeck.get(i) != null){
-            //     String iconString = state.redDeck.get(i) + ".png";
-            //     redDeck[i].setIcon(stringToImage.get(iconString));
-            // }
-            // else{
-            //     redDeck[i].setIcon(null);
-            // }
         }
    	}
 

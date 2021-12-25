@@ -23,6 +23,9 @@ public class Window extends JFrame
     ImageIcon b5 = new ImageIcon("B5.png");
     ImageIcon b6 = new ImageIcon("B6.png");
 
+    ImageIcon bluedown = new ImageIcon("bluedown.jpg");
+    ImageIcon reddown = new ImageIcon("reddown.jpg");
+
     HashMap<String, ImageIcon> stringToImage;
 
     State state = new State();
@@ -67,10 +70,21 @@ public class Window extends JFrame
 
         //@Override
         public void mousePressed(MouseEvent e) {
+            boolean faceUp = true;
             // TODO Auto-generated method stub
             // super.mouseDragged(e);
             //Render();
+            if(e.getButton() == MouseEvent.BUTTON1){
+                System.out.println("Left Click");
+                // face up
+                faceUp = true;
+            }
+            if(e.getButton() == MouseEvent.BUTTON3){
+                System.out.println("Right Click");
+                // face down
 
+                faceUp = false;
+            }
             row = i;
         	column = j;
             state.row = i;
@@ -78,10 +92,22 @@ public class Window extends JFrame
             if(state.Turn.equals("b")){
                 state.Piece = state.blueDeck.get(0).piece;
                 state.state_card = state.blueDeck.get(0);
+                if(faceUp){
+                    state.state_card.faceUp = true;
+                }
+                else{
+                    state.state_card.faceUp = false;
+                }
             }
             else{
                 state.Piece = state.redDeck.get(0).piece;
                 state.state_card = state.redDeck.get(0);
+                if(faceUp){
+                    state.state_card.faceUp = true;
+                }
+                else{
+                    state.state_card.faceUp = false;
+                }
             }
 
 
@@ -95,9 +121,20 @@ public class Window extends JFrame
 
         //@Override
         public void mouseDragged(MouseEvent e) {
+            boolean faceUp = true;
             // TODO Auto-generated method stub
             // super.mouseDragged(e);
             //Render();
+            if(e.getButton() == MouseEvent.BUTTON1){
+                System.out.println("Left Click");
+                // face up
+                faceUp = true;
+            }
+            if(e.getButton() == MouseEvent.BUTTON3){
+                System.out.println("Right Click");
+                // face down
+                faceUp = false;
+            }
             row = i;
         	column = j;
             state.row = i;
@@ -105,6 +142,7 @@ public class Window extends JFrame
             if(state.Turn.equals("b")){
                 state.Piece = state.blueDeck.get(0).piece;
                 state.state_card = state.blueDeck.get(0);
+                
             }
             else{
                 state.Piece = state.redDeck.get(0).piece;
@@ -146,11 +184,16 @@ public class Window extends JFrame
         b5 = new ImageIcon("B5.png");
         b6 = new ImageIcon("B6.png");
 
+        bluedown = new ImageIcon("bluedown.jpg");
+        reddown = new ImageIcon("reddown.jpg");
+
         stringToImage = new HashMap<String, ImageIcon>();
         stringToImage.put("A5.png", a5);
         stringToImage.put("A6.png", a6);
         stringToImage.put("B5.png", b5);
         stringToImage.put("B6.png", b6);
+        stringToImage.put("bluedown.jpg", bluedown);
+        stringToImage.put("reddown.jpg", reddown);
 
         setTitle("Freeza Chess");
         setSize(p_width, p_height);
@@ -280,6 +323,9 @@ public class Window extends JFrame
                     else if(state.board[i][j].piece.equals("A6")){
                         spots[i][j].setIcon(a6);
                     }
+                    if(state.board[i][j].card.faceUp == false){
+                        spots[i][j].setIcon(bluedown);
+                    }
                 }
                 else if(state.board[i][j].turn.equals("r")){
                     spots[i][j].setBackground(Color.RED);
@@ -288,6 +334,9 @@ public class Window extends JFrame
                     }
                     else if(state.board[i][j].piece.equals("B6")){
                         spots[i][j].setIcon(b6);
+                    }
+                    if(state.board[i][j].card.faceUp == false){
+                        spots[i][j].setIcon(reddown);
                     }
                 }
             }

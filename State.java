@@ -76,6 +76,11 @@ public class State
             if(row-1 >= 0){
                 if(state_card.up > board[row-1][column].card.down){
                     board[row-1][column].turn = Turn;
+                    if(board[row-1][column].card.faceUp == false){
+                        System.out.println("Check up face up found");
+                        System.out.println(board[row-1][column].piece);
+                        board[row-1][column].card.faceUp = true;
+                    }
                 }
             }
         }
@@ -90,6 +95,12 @@ public class State
             if(column + 1 < 3){
                 if(state_card.right > board[row][column+1].card.left){
                     board[row][column+1].turn = Turn;
+                    if(board[row][column+1].card.faceUp == false){
+                        board[row][column+1].card.faceUp = true;
+                        System.out.println("Check right face up found");
+                        System.out.println(board[row][column+1].piece);
+                        System.out.println(board[row][column+1].card.faceUp);
+                    }
                 }
             }
         }
@@ -103,6 +114,10 @@ public class State
             if(row + 1 < 3){
                 if(state_card.down > board[row+1][column].card.up){
                     board[row+1][column].turn = Turn;
+                    if(board[row+1][column].card.faceUp == false){
+                        System.out.println("Check down face up found");
+                        board[row+1][column].card.faceUp = true;
+                    }
                 }
             }
         }
@@ -116,6 +131,10 @@ public class State
             if(column - 1 >= 0){
                 if(state_card.left > board[row][column-1].card.right){
                     board[row][column-1].turn = Turn;
+                    if(board[row][column-1].card.faceUp == false){
+                        System.out.println("Check left face up found");
+                        board[row][column-1].card.faceUp = true;
+                    }
                 }
             }
         }

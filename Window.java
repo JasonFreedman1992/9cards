@@ -315,26 +315,29 @@ public class Window extends JFrame
         {
             for(int j = 0; j < 3; j++)
             {
+                // render cards
+                if(state.board[i][j].piece.equals("A5")){
+                    spots[i][j].setIcon(a5);
+                }
+                else if(state.board[i][j].piece.equals("A6")){
+                    spots[i][j].setIcon(a6);
+                }
+                else if(state.board[i][j].piece.equals("B5")){
+                    spots[i][j].setIcon(b5);
+                }
+                else if(state.board[i][j].piece.equals("B6")){
+                    spots[i][j].setIcon(b6);
+                }
+
+                // render color specific stuff
                 if(state.board[i][j].turn.equals("b")){
                     spots[i][j].setBackground(Color.BLUE);
-                    if(state.board[i][j].piece.equals("A5")){
-                        spots[i][j].setIcon(a5);
-                    }
-                    else if(state.board[i][j].piece.equals("A6")){
-                        spots[i][j].setIcon(a6);
-                    }
                     if(state.board[i][j].card.faceUp == false){
                         spots[i][j].setIcon(bluedown);
                     }
                 }
                 else if(state.board[i][j].turn.equals("r")){
                     spots[i][j].setBackground(Color.RED);
-                    if(state.board[i][j].piece.equals("B5")){
-                        spots[i][j].setIcon(b5);
-                    }
-                    else if(state.board[i][j].piece.equals("B6")){
-                        spots[i][j].setIcon(b6);
-                    }
                     if(state.board[i][j].card.faceUp == false){
                         spots[i][j].setIcon(reddown);
                     }

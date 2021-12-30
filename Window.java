@@ -195,7 +195,7 @@ public class Window extends JFrame
         stringToImage.put("bluedown.jpg", bluedown);
         stringToImage.put("reddown.jpg", reddown);
 
-        setTitle("Freeza Chess");
+        setTitle("9 Cards");
         setSize(p_width, p_height);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
